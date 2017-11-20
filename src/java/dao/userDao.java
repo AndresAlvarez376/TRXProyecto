@@ -91,10 +91,11 @@ public class userDao {
 		List liste_utilisateur = new ArrayList();
 			try {
 				//La requ�te sql qui permet de permet de lire les enregistrement
-					String sql = " 	 	SELECT  se.direccion, cl.idClase, cl.fecha, cl.horaInicio, cl.HoraFin, (cl.cupos-count(re.clase_idClase)) cupos\n" +
+					String sql = " SELECT  se.direccion, cl.idClase, cl.fecha, cl.horaInicio, cl.HoraFin, (cl.cupos-count(re.clase_idClase)) cupos\n" +
 "	FROM clase AS cl INNER JOIN reserva AS re ON cl.idClase = re.clase_idClase\n" +
 "	INNER JOIN sede AS se ON se.idSede = cl.sede_idSede\n" +
-"\n" +
+"	WHERE (cl.fecha > DATE(sysdate()) OR  (cl.fecha = DATE(sysdate()) AND (cl.horaInicio > TIME(sysdate()))))\n" +
+"	AND cl.sede_idSede = 1\n" +
 "	GROUP BY cl.idClase\n" +
 "	HAVING cupos > 0;";
 				//on fait appel a la m�thode PrepareStatement pour pr�parer la requ�te sql
