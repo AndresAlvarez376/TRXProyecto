@@ -6,24 +6,22 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ajouter un nouveau Utilisateur</title>
+<title>Dijite su cedula</title>
 </head>
 <body>
 	<form method="POST" action="UserHandler" name="ajouter">
 		<input type="hidden" name="action" value="insert" />
 		<table>
-                        <caption>Ajouter un nouveau utilisateur</caption>
+                        <caption>Dijite su cedula</caption>
 			<tr>
-                                <td><input type="text" name="id" placeholder="Utilidaruer Id"/></td>
+                                <td><input type="text" name="idClase" placeholder="idClase "/></td>
 			</tr>
-			<tr>
-                                <td><input type="text" name="nom" placeholder="nom" /></td>
+                        <tr>
+                                <td><input type="text" name="idUsuario" placeholder="Cedula: "/></td>
 			</tr>
+                        
 			<tr>
-				<td><input type="text" name="prenom"  placeholder="prenom" /></td>
-			</tr>
-			<tr>
-                            <td><input type="submit" value="ajouter" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="annuler" /></td>
+                            <td><input type="submit" value="ajouter" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="annuler" /></td>
 			</tr>
 		</table>
 	</form>

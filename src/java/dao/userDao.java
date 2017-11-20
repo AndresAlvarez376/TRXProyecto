@@ -19,19 +19,19 @@ public class userDao {
 	//D�finit la m�thode addUser qui permet d'ajouter un nouveau utilisateur
 	//elle admet en argumen un variavle de type userBean ,
 	//La classe qui repr�sente tout les utilisateurs
-	public void addUser(userBean utilisateur){
+	public void addUser(ReservaBean utilisateur){
 		try {
 			//La requ�te sql qui permet d'ajouter un enregistrement
-			String sql = "INSERT INTO utilisateur(ID,NOM,PRENOM)" + "VALUES(?,?,?)";
+			String sql = "INSERT INTO reserva(clase_idClase,usuario_idUsuario)" + "VALUES(?,?)";
 			//Une methode qui pr�pare la requ�te sql
 			PreparedStatement ps = conn.prepareStatement(sql);
 			/*Les 3 instructions suivantes servent a remplacer les 3 '?' 
 			 * Les num�rps 1,2 et 3 donnent a la variable laquelle parmi les 
 			 * '?' doit la remplacer ,1 c'est-a-dire que la variable remplace le 1er 
 			 */
-			ps.setInt(1, utilisateur.getID());
-			ps.setString(2,utilisateur.getNom());
-			ps.setString(3,utilisateur.getPrenom());
+			ps.setInt(1, utilisateur.getIdClase());
+			ps.setInt(2,utilisateur.getIdUsuario());
+			
 			/* ex�cuter la requ�te */
                         ps.executeUpdate();
 			/* cette partie pour g�rer les exceptions */

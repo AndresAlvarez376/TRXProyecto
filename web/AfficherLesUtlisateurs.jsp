@@ -48,8 +48,8 @@
 			<td>
                             <form method="POST" action="UserHandler">
                                 <button class="edit"></button>
-                                <input type="hidden" name="action" value="editForm" >
-                                    <input type="hidden" name="ID" value="<%= utilisateur.getID() %>" >
+                                <input type="hidden" name="action" value="insert" >
+                                    <input type="hidden" name="ID" value="<%= utilisateur.getID()%>" >
                                 </form>
                             
                         </td>
@@ -67,10 +67,10 @@
 			}
 		%>	
 </table>
-<div class="lien">
+<!--<div class="lien">
     
     <p><a href="UserHandler?action=insert" >Reservar</a></p>
-</div>
+</div>-->
 </body>
 </html>
 

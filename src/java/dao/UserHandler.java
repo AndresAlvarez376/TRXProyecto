@@ -28,43 +28,36 @@ public class UserHandler extends HttpServlet {
 			String redirect = "";
 			//On r�cup�re la valeur de param�tres
 			//On r�cup�re la valeur de paramm�tres ID
-			String uId = request.getParameter("id");
-                        String uCupos = request.getParameter("cupos");
+			String uIdClase = request.getParameter("idClase");
+                        String uIdUsuario = request.getParameter("idUsuario");
 			//On r�cup�re la valeur du paramm�tre action qui prend les valeurs
 			//insert,edit,editForm,listUser ou delete les cas que nous allons trait� par la suite
 			String action = request.getParameter("action");
 				// Le 1ere cas ou l'action est insert : ajoute un nouveau utilisateur 
 			//On v�rifie que la variable uId est <> de null
 			//Et l'action est 'insert'
-			if(  uId != null && action.equalsIgnoreCase("insert")){
-				int ID = Integer.parseInt(uId);
-                                int CUPOS = Integer.parseInt(uCupos);
+			if(  uIdUsuario != null && uIdClase != null && action.equalsIgnoreCase("insert")){
+				int idClase = Integer.parseInt(uIdClase);
+                                int idUsuario = Integer.parseInt(uIdUsuario);
 			/*
 			 * On cr�e une instance de la classe userBean
 			 * qui contient tous les attributs ID nom prenom
 			 * */
-				userBean utilisateur = new userBean();
+				ReservaBean utilisateur = new ReservaBean();
 			/*
 			 * On affecte les valeurs retenues par la m�thode doGet au
 			 * attributs de l'instance
 			 * */
-				System.out.println("id : " + ID);
-				System.out.println("nom : " + request.getParameter("nom"));
-				System.out.println("prenom : " + request.getParameter("prenom"));
-                                System.out.println("cupos : " + CUPOS  );
-                                System.out.println("horaInicio : " + request.getParameter("horaInicio"));
-                                System.out.println("horaFin : " + request.getParameter("horaFin"));
+				System.out.println("idClase : " + idClase);
+                                System.out.println("idUsuario : " + idUsuario  );
+                                utilisateur.setIdClase(idClase);
+                                utilisateur.setIdUsuario(idUsuario);
+                               
                                 
-				utilisateur.setID(ID);
-				utilisateur.setNom(request.getParameter("nom"));
-				utilisateur.setPrenom(request.getParameter("prenom"));
-                                utilisateur.setCupos(CUPOS);
-                                utilisateur.setHoraInicio(request.getParameter("horaInicio"));
-                                utilisateur.setHoraFin(request.getParameter("horaFin"));
 			/*
 			 * On fait appel a la m�thode addUser da la classe userDao.java
 			 * */
-			dao.addUser(utilisateur);
+            		dao.addUser(utilisateur);
 			  redirect = liste;
 				request.setAttribute("utilisateurs",dao.getAllUsers());
 				System.out.println("le utilisateur est bien cr�e");
